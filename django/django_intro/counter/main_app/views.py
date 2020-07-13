@@ -1,27 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 def index(request):
-    num_visits = request.session.get('num_visits', 0) + 1
-    request.session['num_visits'] = request.POST['num']  # num would come from HTML
-    print(request.session['num_visits'])
-
-# checking to see if it's users first time visiting:
-# need so app doesn't break
-# quickly at recording 1h5m in
-    if 'num_visits' in request.session:
-        # LOGIC FOR USER ALREADY VISITS
+    if "count" not in request.session:
+        request.session['count'] = 1
+        # this creates a key called 'count' inside the session dict with a value of 1
     else:
-        # LOGIC FOR USER VISITING FIRST TIME
-
-
-    if "counter" not in request.session:
-        request.session['counter'] = 1
-
-    else:
-        request.session['counter'] += 1
+        request.session['count'] += 1
     return render(request, "index.html")
-    # request.session['name'] = request.POST['name']
-    # request.session['counter'] = 100
 
 def destroy(request):
-    del request.session['counter']
+    del request.session['count']
+    return render(request, "index.html")
