@@ -1,0 +1,30 @@
+#container{
+    width: 375px;
+    height: 260px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+    margin: 20px;
+    background-color: pink;
+}
+
+input{
+    margin-left: 100px;
+}
+
+#location{
+    margin-left: 78px;
+
+}
+
+#language{
+    margin-left: 42px;
+}
+
+#submit{
+    margin-left: 315px;
+}
+
+#go_back{
+    margin-left: 300px;
+    margin-top: 70px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1, h3{
+            color: blueviolet;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello Flask!</h1>
+    <h3>We did it!</h3>    
+
+    {#   syntax for inserting python code in HTML file
+    {{ some variable }}
+    {% some expression %}   #}
+
+    <p>Phrase: {{ phrase }}</p>
+    <p>Times: {{ times }}</p>
+
+    {% for x in range(0,times): %}
+        <p>{{ phrase }}</p>
+    {% endfor %}
+
+    {% if phrase == "hello" %}
+        <p>The phrase says hello</p>
+    {% endif %}
+
+
+
+</body>
+</html>

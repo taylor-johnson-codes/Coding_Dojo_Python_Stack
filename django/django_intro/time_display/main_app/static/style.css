@@ -1,0 +1,21 @@
+#container{
+    width: 1000px;
+    height: 700px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+}
+
+h3{
+    border: 5px solid black;
+    text-align: center;
+    width: 300px;
+    margin-left: 300px;
+}
+
+#display{
+    border: 5px solid black;
+    text-align: center;
+    width: 300px;
+    font-size: 40px;
+    margin-left: 300px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Lecture</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'JS/script.js' %}"></script>
+</head>
+<body>
+    <h1>Hello World from Index</h1>
+
+    <h2>Welcome, {{first_name}}!</h2>
+
+    <p>You reside in {{address.state}}.</p>
+
+    <p>
+        {% for interest in interests %}
+        {{interest}}
+        {% endfor %}
+    </p>
+
+    {% for interest in interests %}
+    <p>{{interest}}</p>
+    {% endfor %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Frequency</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for interest in interests %}
+                <tr>
+                    <td>{{interest.name}}</td>
+                    <td>{{interest.frequency}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <img src="{% static 'imgs/example.jpg' %}" alt="example pic">
+
+    <form action="/some_route" method="post">
+        {% csrf_token %}
+        <p>Field One: <input name="one" type="text"></p>
+        <p>Field Two: <input name="two" type="text"></p>
+        <button type="submit">Submit</button>
+    </form>
+
+
+
+</body>
+</html>

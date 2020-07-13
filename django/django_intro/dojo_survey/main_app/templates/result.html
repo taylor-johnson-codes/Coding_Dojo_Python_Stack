@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey Result</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="container">
+        <h2>Submitted Info</h2>
+        <table>
+            <tr>
+                <td style="width: 200px">Name:</td>
+                <td>{{ name }}</td>
+            </tr>
+            <tr>
+                <td>Dojo Location:</td>
+                <td>{{ location }}</td>
+            </tr>
+            <tr>
+                <td>Favorite Language:</td>
+                <td>{{ language }}</td>
+            </tr>
+            <tr>
+                <td>Comment:</td>
+                <td>{{ comment }}</td>
+            </tr>
+        </table>
+        <form action="/">
+            <input type="submit" id='go_back' value="Go back" />
+        </form>
+    </div>
+</body>
+</html>
