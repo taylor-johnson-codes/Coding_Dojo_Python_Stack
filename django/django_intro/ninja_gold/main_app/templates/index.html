@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="container">
+        <div>
+            <div id="gold_counter1">
+                <p>Your Gold Coins:</p>
+            </div>
+            <div id="gold_counter2">
+                <p id="gold_counter3">{{ request.session.coins }}</p>
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <h2>Farm</h2>
+                <p>(earns 10-20 gold coins)</p>
+                <form action="process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="hidden_process" value='farm'>
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <div class="card">
+                <h2>Cave</h2>
+                <p>(earns 5-10 gold coins)</p>
+                <form action="process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="hidden_process" value='cave'>
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <div class="card">
+                <h2>House</h2>
+                <p>(earns 2-5 gold coins)</p>
+                <form action="process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="hidden_process" value='house'>
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+            <div class="card">
+                <h2>Casino</h2>
+                <p>(earns/takes 0-50 gold coins)</p>
+                <form action="process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="hidden_process" value='casino'>
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+        </div>
+        <div>
+            <p>Activities:</p>
+            <p id="activities">
+        </div>
+    </div>
+</body>
+</html>
