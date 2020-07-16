@@ -19,30 +19,21 @@
                     <th>Email</th>
                     <th>Age</th>
                 </tr>  
+                {% for user in all_users %}
                 <tr>  
-                    <td>1</td>
-                    <td>name</td>
-                    <td>email</td>
-                    <td>age</td>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td>{{ user.email_address }}</td>
+                    <td>{{ user.age }}</td>
                 </tr>  
-                <tr>  
-                    <td>2</td>
-                    <td>name</td>
-                    <td>email</td>
-                    <td>age</td>
-                </tr>  
-                <tr>  
-                    <td>3</td>
-                    <td>name</td>
-                    <td>email</td>
-                    <td>age</td>
-                </tr>  
+                {% endfor %}
             </table>  
         </div>
 
         <h1 id=line>Add a User</h1>
-        <form action="/add_user" method="post">
+        <form action="add_user" method="post">
             {% csrf_token %}
+            <!-- put in table if I want all labels and inputs lined up evenly -->
             <div id=top>
                 <label for="fname">First Name</label>
                 <input type="text" name="fname" id="fname">
@@ -55,7 +46,7 @@
                 <label for="age">Age</label>
                 <input type="text" name="age" id="age">
             </div>
-            <input type="submit" value="Add" id="add">
+            <input type="submit" value="Add" id="add_button">
         </form>
     </div>
 </body>

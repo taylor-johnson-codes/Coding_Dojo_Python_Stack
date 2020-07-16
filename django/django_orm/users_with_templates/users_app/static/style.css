@@ -46,13 +46,10 @@ tr td:hover { background: #666; color: #FFF; }
 /*   Reference: http://cssmenumaker.com/blog/stylish-css-tables-tutorial/   */
 /*   and: https://stackoverflow.com/questions/3313456/css-borders-between-table-columns-only   */
 
-#lname{
-    display: inline-block;
-}
 
-#add{
-    border: 3px solid black;
-    padding: 5px;
+#line{
+    border-top: 3px solid black;
+    padding-top: 20px;
 }
 
 #top, #bottom{
@@ -67,7 +64,7 @@ label{
     margin-right: 10px;
 }
 
-#line{
-    border-top: 3px solid black;
-    padding-top: 20px;
+#add_button{
+    border: 3px solid black;
+    padding: 5px;
 }
