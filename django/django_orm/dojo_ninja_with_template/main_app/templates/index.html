@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos & Ninjas with Template</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="container">
+        <div id="top">
+            <div class="card">
+                <h1>Add a Dojo</h1>
+                <form action="add_dojo" method="post">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td><label for="name">Name</label></td>
+                            <td><input type="text" name="name" id="name"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="city">City</label></td>
+                            <td><input type="text" name="city" id="city"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="state">State</label></td>
+                            <td><input type="text" name="state" id="state"></td>
+                            
+                        </tr>
+                    </table>
+                    <input type="submit" value="Add" id="add_button">
+                </form>
+            </div>
+            <div class="card">
+                <h1>Add a Ninja</h1>
+                <form action="add_ninja" method="post">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td><label for="fname">First Name</label></td>
+                            <td><input type="text" name="fname" id="fname"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="lname">Last Name</label></td>
+                            <td><input type="text" name="lname" id="lname"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="dojo">Dojo</label></td>
+                            <td>
+                                <select name="dojo" id="dojo">
+                                    <option value="seattle">Seattle, WA</option>
+                                    <option value="boise">Boise, ID</option>
+                                    <option value="anchorage">Anchorage, AK</option>
+                                    <option value="honolulu">Honolulu, HI</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="Add" id="add_button">
+                </form>
+            </div>
+        </div>
+
+        <div id="bottom">
+            <h1>All the Dojos</h1>
+            <p>insert list here</p>
+        </div>
+    </div>
+</body>
+</html>
