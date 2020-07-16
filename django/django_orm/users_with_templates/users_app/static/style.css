@@ -1,7 +1,6 @@
 #container{
     width: 900px;
     height: 800px;
-    /* background-color: pink; */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 20px;
     text-align: center;
@@ -45,7 +44,6 @@ tr td:hover { background: #666; color: #FFF; }
 
 /*   Reference: http://cssmenumaker.com/blog/stylish-css-tables-tutorial/   */
 /*   and: https://stackoverflow.com/questions/3313456/css-borders-between-table-columns-only   */
-
 
 #line{
     border-top: 3px solid black;
