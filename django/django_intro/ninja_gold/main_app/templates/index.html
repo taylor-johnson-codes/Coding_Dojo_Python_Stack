@@ -57,7 +57,13 @@
         </div>
         <div>
             <p>Activities:</p>
-            <p id="activities">
+            <div id="activities_div">
+                {% for item in request.session.activity reversed %}
+                <!-- reversed keyword makes it so the most recent activity appears at the top of the list -->
+                {{ item | safe }}
+                <!-- safe keyword tells Jinja to run the html code that was stitched into views.py to be able to turn activity red/green -->
+                {% endfor %}
+            </div>
         </div>
     </div>
 </body>
