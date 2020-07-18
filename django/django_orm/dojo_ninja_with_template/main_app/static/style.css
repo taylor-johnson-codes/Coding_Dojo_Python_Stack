@@ -2,6 +2,7 @@
     width: 900px;
     height: 800px;
     background-color: pink;
+    border: 2px solid black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 20px;
     text-align: center;
@@ -33,5 +34,20 @@ table{
 }
 
 #bottom{
-    padding-top: 10px;
+    padding-top: 10px;   
+}
+
+#results{
+    height: 450px;
+    overflow: auto;
+}
+
+ul{
+    display: flex;
+    justify-content: center;
+}
+
+h3, h4{
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

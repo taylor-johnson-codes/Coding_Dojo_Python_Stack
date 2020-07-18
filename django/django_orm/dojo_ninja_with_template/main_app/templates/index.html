@@ -12,7 +12,7 @@
         <div id="top">
             <div class="card">
                 <h1>Add a Dojo</h1>
-                <form action="add_dojo" method="post">
+                <form action="create_dojo" method="post">
                     {% csrf_token %}
                     <table>
                         <tr>
@@ -34,26 +34,25 @@
             </div>
             <div class="card">
                 <h1>Add a Ninja</h1>
-                <form action="add_ninja" method="post">
+                <form action="create_ninja" method="post">
                     {% csrf_token %}
                     <table>
                         <tr>
-                            <td><label for="fname">First Name</label></td>
-                            <td><input type="text" name="fname" id="fname"></td>
+                            <td><label for="first_name">First Name</label></td>
+                            <td><input type="text" name="first_name" id="first_name"></td>
                         </tr>
                         <tr>
-                            <td><label for="lname">Last Name</label></td>
-                            <td><input type="text" name="lname" id="lname"></td>
+                            <td><label for="last_name">Last Name</label></td>
+                            <td><input type="text" name="last_name" id="last_name"></td>
                         </tr>
                         <tr>
-                            <td><label for="dojo">Dojo</label></td>
+                            <td><label for="dojo_id">Dojo</label></td>
                             <td>
-                                <select name="dojo" id="dojo">
-                                    <option value="seattle">Seattle, WA</option>
-                                    <option value="boise">Boise, ID</option>
-                                    <option value="anchorage">Anchorage, AK</option>
-                                    <option value="honolulu">Honolulu, HI</option>
-                                    <option value="other">Other</option>
+                                <!-- for getting all dojos in the database to populate in the dropdown menu -->
+                                <select name="dojo_id" id="dojo_id">
+                                    {% for dojo in all_dojos %}
+                                    <option value="{{dojo.id}}">{{dojo.name}}</option>
+                                    {% endfor %}
                                 </select>
                             </td>
                         </tr>
@@ -65,7 +64,19 @@
 
         <div id="bottom">
             <h1>All the Dojos</h1>
-            <p>insert list here</p>
+            <div id="results">
+                {% for dojo in all_dojos %}
+                    <h3>{{dojo.name}} in {{dojo.city}}, {{dojo.state}}</h3>
+                    <h4>Total Ninjas: {{dojo.ninjas.all | length}}</h4>
+                    <a href="delete_dojo/{{dojo.id}}">Delete {{dojo.name}}</a>
+                    <!-- this is deleting via a get method; can also delete by using a post method instead -->
+                    {% for ninja in dojo.ninjas.all %}
+                        <ul>
+                            <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+                        </ul>    
+                    {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </body>
