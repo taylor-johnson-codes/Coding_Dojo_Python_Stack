@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Books & Authors</title>
+</head>
+<body>
+    <div class="show_container">
+        <h1>{{book.title}}</h1>
+        <h3>ID: {{book.id}}</h3>
+        <h3>Description: {{book.desc}}</h3>
+        <h3>Authors:</h3>
+        <ul>
+            {% for author in book.authors.all %}
+            <li>{{author.first_name}} {{author.last_name}}</li>
+            {% endfor %}
+        </ul>
+        <form action="/addAuthorToBook" method="post">
+            <!-- book_id and author_id being sent via addAuthorToBook route -->
+            {% csrf_token %}
+            <input type="hidden" name="book_id" value='{{book.id}}'>
+            <!-- hidden input to send this request back via post method -->
+            <select name="author_id" id="author_id">
+                {% for author in all_authors %}
+                    <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Add" id='add_button'>
+        </form>
+    </div>
+</body>
+</html>
