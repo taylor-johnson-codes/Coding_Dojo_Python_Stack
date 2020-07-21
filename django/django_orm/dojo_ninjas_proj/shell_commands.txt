@@ -1,38 +1,38 @@
 python manage.py shell
 
-from dojo_ninjas_app.models import *
+from main_app.models import *
 
-dojo1 = Dojos.objects.create(name='Seattle Dojo', city='Seattle', state='WA')
+dojo1 = Dojo.objects.create(name='Seattle Dojo', city='Seattle', state='WA')
 
-dojo2 = Dojos.objects.create(name='Boise Dojo', city='Boise', state='ID')
+dojo2 = Dojo.objects.create(name='Boise Dojo', city='Boise', state='ID')
 
-dojo3 = Dojos.objects.create(name='Anchorage Dojo', city='Anchorage', state='AK')
+dojo3 = Dojo.objects.create(name='Anchorage Dojo', city='Anchorage', state='AK')
 
-Dojos.objects.all().delete()
+Dojo.objects.all().delete()
 
-dojo1 = Dojos.objects.create(name='Seattle Dojo', city='Seattle', state='WA')
+dojo1 = Dojo.objects.create(name='Seattle Dojo', city='Seattle', state='WA')
 
-dojo2 = Dojos.objects.create(name='Boise Dojo', city='Boise', state='ID')
+dojo2 = Dojo.objects.create(name='Boise Dojo', city='Boise', state='ID')
 
-dojo3 = Dojos.objects.create(name='Anchorage Dojo', city='Anchorage', state='AK')
+dojo3 = Dojo.objects.create(name='Anchorage Dojo', city='Anchorage', state='AK')
 
-ninja1 = Ninjas.objects.create(first_name='Taylor', last_name='Johnson', dojo=dojo1)
+ninja1 = Ninja.objects.create(first_name='Taylor', last_name='Johnson', dojo=dojo1)
 
-ninja2 = Ninjas.objects.create(first_name='Good', last_name='Student', dojo=dojo1)
+ninja2 = Ninja.objects.create(first_name='Good', last_name='Student', dojo=dojo1)
 
-ninja3 = Ninjas.objects.create(first_name='Bad', last_name='Student', dojo=dojo1)
+ninja3 = Ninja.objects.create(first_name='Bad', last_name='Student', dojo=dojo1)
 
-ninja4 = Ninjas.objects.create(first_name='Pro', last_name='Hockey-Player', dojo=dojo2)
+ninja4 = Ninja.objects.create(first_name='Pro', last_name='Hockey-Player', dojo=dojo2)
 
-ninja5 = Ninjas.objects.create(first_name='Pro', last_name='Volleyball-Player', dojo=dojo2)
+ninja5 = Ninja.objects.create(first_name='Pro', last_name='Volleyball-Player', dojo=dojo2)
 
-ninja6 = Ninjas.objects.create(first_name='Pro', last_name='Opera-Singer', dojo=dojo2)
+ninja6 = Ninja.objects.create(first_name='Pro', last_name='Opera-Singer', dojo=dojo2)
 
-ninja7 = Ninjas.objects.create(first_name='Young', last_name='Person', dojo=dojo3)
+ninja7 = Ninja.objects.create(first_name='Young', last_name='Person', dojo=dojo3)
 
-ninja8 = Ninjas.objects.create(first_name='Middle-Aged', last_name='Person', dojo=dojo3)
+ninja8 = Ninja.objects.create(first_name='Middle-Aged', last_name='Person', dojo=dojo3)
 
-ninja9 = Ninjas.objects.create(first_name='Old', last_name='Person', dojo=dojo3)
+ninja9 = Ninja.objects.create(first_name='Old', last_name='Person', dojo=dojo3)
 
 dojo1.ninjas
 
@@ -54,4 +54,4 @@ python manage.py shell
 
 from dojo_ninjas_app.models import *
 
-dojo4 = Dojos.objects.create(name='Honolulu Dojo', city='Honolulu', state='HI')
+dojo4 = Dojo.objects.create(name='Honolulu Dojo', city='Honolulu', state='HI')
