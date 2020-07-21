@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Semi_Restful TV Shows</title>
+</head>
+<body>
+    <div id="container">
+        <a href="/shows">Go Back</a>
+        <h1>TV Show {{show.id}}</h1>
+        <h2>Title: {{show.title}}</h2>
+        <h2>Network: {{show.network}}</h2>
+        <h2>Release Date: {{release_date}}</h2>
+        <h2>Description: {{show.desc}}</h2>
+        <h3>Last Updated: {{updated_at}}</h3>
+        <a href="/shows/{{show_id}}/update">Edit</a>
+        <a href="/shows/{{show.id}}/destroy">Delete</a>
+    </div>
+</body>
+</html>
