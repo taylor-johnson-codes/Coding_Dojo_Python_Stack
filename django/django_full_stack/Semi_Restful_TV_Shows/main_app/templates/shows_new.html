@@ -9,18 +9,26 @@
 </head>
 <body>
     <div id="container">
-        <a href="">Go Back</a>
+        <a href="/shows">Go Back</a>
         <h1>Add a New Show</h1>
         <form action="/shows/create" method="post">
             {% csrf_token %}
-            Title:
-            <input type="text" name="title" id="title">
-            Network:
-            <input type="text" name="network" id="network">
-            Release Date:
-            <input type="date" name="release_date" id="release_date">
-            Description:
-            <textarea name="desc" id="desc" cols="30" rows="10"></textarea>
+            <p>
+                Title:
+                <input type="text" name="title" id="title">
+            </p>
+            <p>
+                Network:
+                <input type="text" name="network" id="network">
+            </p>
+            <p>
+                Release Date:
+                <input type="date" name="release_date" id="release_date">
+            </p>
+            <p>
+                Description:
+                <textarea name="desc" id="desc" cols="30" rows="10"></textarea>
+            </p>
             <button type="submit">Create</button>
         </form>
     </div>

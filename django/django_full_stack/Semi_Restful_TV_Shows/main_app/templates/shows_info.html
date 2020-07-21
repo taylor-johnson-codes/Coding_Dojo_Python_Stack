@@ -13,10 +13,10 @@
         <h1>TV Show {{show.id}}</h1>
         <h2>Title: {{show.title}}</h2>
         <h2>Network: {{show.network}}</h2>
-        <h2>Release Date: {{release_date}}</h2>
+        <h2>Release Date: {{show.release_date}}</h2>
         <h2>Description: {{show.desc}}</h2>
-        <h3>Last Updated: {{updated_at}}</h3>
-        <a href="/shows/{{show_id}}/update">Edit</a>
+        <h3>Last Updated: {{show.updated_at}}</h3>
+        <a href="/shows/{{show.id}}/edit">Edit</a>
         <a href="/shows/{{show.id}}/destroy">Delete</a>
     </div>
 </body>

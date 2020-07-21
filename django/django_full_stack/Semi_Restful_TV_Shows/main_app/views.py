@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import *
 
-def index (request):
-    redirect('/shows')
+def root(request):
+    return redirect('/shows')
 
-def all_shows_table(request):
-    all_shows = Shows.objects.all()
+def all_shows(request):
+    all_shows = Show.objects.all()
     context = {
         'all_shows' : all_shows
     }
@@ -20,11 +20,7 @@ def create(request):
     release_date = request.POST['release_date']
     desc = request.POST['desc']
     new_show = Show.objects.create(title=title, network=network, release_date=release_date, desc=desc)
-    all_shows = Shows.objects.all()
-    context = {
-        'all_shows' : all_shows
-    }
-    return render(request, 'shows/<int: show_id>', context)
+    return redirect('/shows/' + str(new_show.id))
 
 def shows_info(request, show_id):
     show = Show.objects.get(id=show_id)
@@ -33,20 +29,23 @@ def shows_info(request, show_id):
     }
     return render(request, 'shows_info.html', context)
 
-def update(request, show_id):
-    title = request.POST['title']
-    network = request.POST['network']
-    release_date = request.POST['release_date']
-    desc = request.POST['desc']
-    # edit_show = Show.object.get(id= ???)
-    # edit_show MAKE CHANGES
-    # edit_show.save
-    edit_show = Show.objects.get(id=show_id)
+def edit(request, show_id):
     context = {
-        'edit_show' : edit_show
+        'show' : Show.objects.get(id=show_id)
     }
-    return render(request, 'shows_info.html', context)
+    return render(request, 'shows_edit.html', context)
 
-def destroy (request, show_id):
-    # destroy CRUD command
+def update(request, show_id):
+    show = Show.objects.get(id=show_id)
+    show.title = request.POST['title']
+    show.network = request.POST['network']
+    show.release_date = request.POST['release_date']
+    show.desc = request.POST['desc']
+    show.save()
+    return redirect('/shows/' + str(show_id))
+    
+
+def destroy(request, show_id):
+    show = Show.objects.get(id=show_id)
+    show.delete()
     return redirect("/shows")
