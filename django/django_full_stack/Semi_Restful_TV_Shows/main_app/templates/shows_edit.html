@@ -11,25 +11,24 @@
     <div id="container">
         <a href="/shows">Go Back</a>
         <h1>Edit Show {{show.id}}</h1>
+        
+        <!-- put above form to alert user of validation issue(s); copy/pasted from platform -->
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <form action="/shows/{{show.id}}/update" method="post">
             {% csrf_token %}
-            <p>
-                Title:
-                <input type="text" name="title" id="title" value="{{show.title}}">
-            </p>
-            <p>
-                Network:
-                <input type="text" name="network" id="network" value="{{show.network}}">
-            </p>
-            <p>
-                Release Date:
-                <input type="date" name="release_date" id="release_date" value="{{show.release_date | safe}}">
-            </p>
-            <p>
-                Description:
-                <textarea name="desc" id="desc" cols="30" rows="10">{{show.desc}}</textarea>
-            </p>
-            <button type="submit">Update</button>
+            <p>Title: <input type="text" name="title" id="title" value="{{show.title}}"></p>
+            <p>Network: <input type="text" name="network" id="network" value="{{show.network}}"></p>
+            <p>Release Date: <input type="date" name="release_date" id="release_date" value="{{show.release_date | safe}}"></p>
+            <p>Description:</p>
+            <p><textarea name="desc" id="desc" cols="30" rows="10">{{show.desc}}</textarea></p>
+            <p><button type="submit">Update</button></p>
         </form>
             <a href="/shows/{{show.id}}">Go to Show</a>  
     </div>

@@ -6,3 +6,35 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 20px;
 }
+
+.messages{
+    color: red;
+}
+
+table{
+    text-align: left;
+    border-collapse: collapse;
+    border: 2px solid #000;
+    margin-bottom: 30px;
+}
+
+th, td{
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+th{
+    background-color: darkgray;
+}
+
+td:first-child { 
+    border-left: none;
+}
+
+td:last-child {
+    border-right: none;
+}
+
+tr:nth-child(even) td { background: #F1F1F1; }
+
+tr:nth-child(odd) td { background: #FEFEFE; }

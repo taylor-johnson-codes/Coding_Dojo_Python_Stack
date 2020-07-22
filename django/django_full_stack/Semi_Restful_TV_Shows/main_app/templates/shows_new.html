@@ -11,25 +11,24 @@
     <div id="container">
         <a href="/shows">Go Back</a>
         <h1>Add a New Show</h1>
+
+        <!-- put above form to alert user of validation issue(s); copy/pasted from platform -->
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <form action="/shows/create" method="post">
             {% csrf_token %}
-            <p>
-                Title:
-                <input type="text" name="title" id="title">
-            </p>
-            <p>
-                Network:
-                <input type="text" name="network" id="network">
-            </p>
-            <p>
-                Release Date:
-                <input type="date" name="release_date" id="release_date">
-            </p>
-            <p>
-                Description:
-                <textarea name="desc" id="desc" cols="30" rows="10"></textarea>
-            </p>
-            <button type="submit">Create</button>
+            <p>Title: <input type="text" name="title" id="title"></p>
+            <p>Network: <input type="text" name="network" id="network"></p>
+            <p>Release Date: <input type="date" name="release_date" id="release_date"></p>
+            <p>Description:</p>
+            <p><textarea name="desc" id="desc" cols="30" rows="10"></textarea></p>
+            <p><button type="submit">Create</button></p>
         </form>
     </div>
 </body>
