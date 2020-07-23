@@ -12,10 +12,6 @@ def wall(request):
 def post_message(request):
     return redirect('/')
 
-
-
-
-
 def login_reg(request):
     return render(request, 'login_reg.html')
 
