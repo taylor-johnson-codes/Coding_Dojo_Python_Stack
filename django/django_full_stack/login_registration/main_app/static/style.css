@@ -9,11 +9,20 @@
     justify-content: center;
 }
 
+#wrapper{
+    /* border: 2px solid black; */
+    position: relative;
+    width: 900px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+}
+
 #registration, #login{
-    display: inline-block;
+    /* border: 2px solid black; */
     width: 45%;
     margin: 10px;
-    /* border: 2px solid black; */
+    display: inline-block;
 }
 
 h1{
@@ -43,11 +52,21 @@ button{
     justify-content: center;
 }
 
+#error_message{
+    /* border: 2px solid black; */
+    color: red;
+    font-size: 25px;
+    margin-top: 250px;
+    width: 500px;
+    height: 200px;
+    position: absolute;
+}
+
 #success_container{
+    border: 2px solid black;
     width: 900px;
     height: 600px;
     background-color: pink;
-    border: 2px solid black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 30px;
 }
