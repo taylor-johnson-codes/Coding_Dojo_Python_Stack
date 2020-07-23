@@ -3,6 +3,9 @@ from django.contrib import messages
 from .models import *
 import bcrypt
 
+def index(request):
+    return redirect('/wall')
+
 def wall(request):
     return render(request, 'wall.html')
 
@@ -21,7 +24,7 @@ def register(request):
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/')
+        return redirect('/login_reg')
     else:
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -43,21 +46,21 @@ def login(request):
             return redirect('/success')
         else:
             messages.error(request, "Invalid credentials.")
-            return redirect('/')
+            return redirect('/login_reg')
     else:
         messages.error(request, "Email doesn't exist in the database. Try again or register.")
-        return redirect('/')
+        return redirect('/login_reg')
 
 def success(request):
     if not "user_id" in request.session:
-        messages.error(request, "You must be logged in to see the success page.")
-        return redirect('/')
+        messages.error(request, "You must be logged in to see the wall.")
+        return redirect('/login_reg')
     else:
         user = User.objects.get(id=request.session['user_id'])
         context = {
             'user': user
         }
-        return render(request, 'success.html', context)
+        return render(request, 'wall.html', context)
 
 def logout(request):
     request.session.clear()
