@@ -4,10 +4,10 @@ from .models import *
 import bcrypt
 
 def index(request):
-    return redirect('/wall')
+    return redirect('/success')
 
 def wall(request):
-    return render(request, 'wall.html')
+    return redirect('/success')
 
 def post_message(request):
     return redirect('/')
