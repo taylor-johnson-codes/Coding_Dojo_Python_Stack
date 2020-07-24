@@ -3,17 +3,15 @@ from django.contrib import messages
 from .models import *
 import bcrypt
 
-def index(request):
-    return redirect('/success')
-
-def wall(request):
-    return redirect('/success')
-
-def post_message(request):
-    return redirect('/')
-
 def login_reg(request):
     return render(request, 'login_reg.html')
+
+def success(request):
+    if not "user_id" in request.session:
+        messages.error(request, "You must be logged in to see the wall.")
+        return redirect('/login_reg')
+    else:
+        return redirect('/wall')
 
 def register(request):
     errors = User.objects.validate_registration(request.POST)
@@ -47,16 +45,42 @@ def login(request):
         messages.error(request, "Email doesn't exist in the database. Try again or register.")
         return redirect('/login_reg')
 
-def success(request):
+def wall(request):
     if not "user_id" in request.session:
         messages.error(request, "You must be logged in to see the wall.")
         return redirect('/login_reg')
     else:
         user = User.objects.get(id=request.session['user_id'])
         context = {
-            'user': user
+            'user': user,
+            "all_messages" : Message.objects.all()
         }
         return render(request, 'wall.html', context)
+
+def create_message(request):
+    errors = Message.objects.validate_message(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/wall')
+    else:
+        user = User.objects.get(id = request.session['user_id'])
+        text = request.POST['message']
+        Message.objects.create(text = text, creator = user)
+        return redirect('/wall')
+
+def create_comment(request):
+    errors = Comment.objects.validate_comment(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/wall')
+    else:
+        text = request.POST['comment']
+        creator = User.objects.get(id = request.session['user_id'])
+        replying_to = Message.objects.get(id = request.POST['message_id'])
+        Comment.objects.create(text=text, creator=creator, replying_to=replying_to)
+        return redirect('/wall')
 
 def logout(request):
     request.session.clear()

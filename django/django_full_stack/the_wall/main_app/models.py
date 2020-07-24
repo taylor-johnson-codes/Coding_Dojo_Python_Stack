@@ -28,11 +28,15 @@ class UserManager(models.Manager):
 class MessageManager(models.Manager): 
     def validate_message(self, postData):
         errors = {}
+        if len(postData['message']) < 1:
+            errors['message_required'] = "Message is empty."
         return errors
 
 class CommentManager(models.Manager): 
     def validate_comment(self, postData):
         errors = {}
+        if len(postData['comment']) < 1:
+            errors['comment_required'] = "Comment is empty."
         return errors
 
 class User(models.Model):
@@ -57,7 +61,7 @@ class Message(models.Model):
 class Comment(models.Model):
     text = models.CharField(max_length=255)
     creator = models.ForeignKey(User, related_name="comments_posted", on_delete=models.CASCADE) # OneToMany
-    reply =  models.ForeignKey(Message, related_name="reply_list", on_delete=models.CASCADE) # OneToMany
+    replying_to = models.ForeignKey(Message, related_name="reply_list", on_delete=models.CASCADE) # OneToMany
     objects = CommentManager()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
